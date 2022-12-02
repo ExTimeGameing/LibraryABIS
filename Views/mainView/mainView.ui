@@ -26,7 +26,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="usesScrollButtons">
        <bool>false</bool>
@@ -152,7 +152,7 @@
          <number>2</number>
         </property>
         <attribute name="horizontalHeaderVisible">
-         <bool>true</bool>
+         <bool>false</bool>
         </attribute>
         <attribute name="horizontalHeaderCascadingSectionResizes">
          <bool>false</bool>
@@ -909,6 +909,210 @@
         <property name="text">
          <string/>
         </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Страница</string>
+       </attribute>
+       <widget class="QComboBox" name="selectBox">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>SELECT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SELECT INNER JOIN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SELECT ORDER BY</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLineEdit" name="lineFree">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>0</y>
+          <width>661</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="boxTabel2">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>0</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Книги</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Авторы</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Формуляры</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Читательские билеты</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Работники</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Должности</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="freeBtn">
+        <property name="geometry">
+         <rect>
+          <x>1070</x>
+          <y>0</y>
+          <width>181</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="boxTabel3">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>50</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Авторы</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QTableWidget" name="freeTabel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>50</y>
+          <width>861</width>
+          <height>611</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="columnCount">
+         <number>0</number>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="boxFK">
+        <property name="geometry">
+         <rect>
+          <x>1070</x>
+          <y>50</y>
+          <width>181</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>id_author</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QComboBox" name="boxOrder">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>100</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>id_book</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>name_book</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>state</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>genre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>publish_year</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>id_author</string>
+         </property>
+        </item>
        </widget>
       </widget>
      </widget>

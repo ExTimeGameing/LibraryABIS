@@ -392,3 +392,33 @@ class Server:
             )
         except Exception as e:
             print(e)
+
+    def selectFree(self, dbName, values):
+        try:
+            self.cursor.execute(
+                f'SELECT {values} FROM public."{dbName}";'
+            )
+            return self.cursor.fetchall()
+        except Exception as e:
+            print(e)
+            return []
+
+    def selectIJ(self, values, dbName, dbNameJoin, key):
+        try:
+            self.cursor.execute(
+                f'SELECT {values} FROM public."{dbName}" INNER JOIN public."{dbNameJoin}" ON {dbNameJoin}.{key} = {dbName}.{key};'
+            )
+            return self.cursor.fetchall()
+        except Exception as e:
+            print(e)
+            return []
+
+    def selectOB(self, values, dbName, key):
+        try:
+            self.cursor.execute(
+                f'SELECT {values} FROM public."{dbName}" ORDER BY {key};'
+            )
+            return self.cursor.fetchall()
+        except Exception as e:
+            print(e)
+            return []

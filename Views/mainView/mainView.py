@@ -516,6 +516,106 @@ class mainView(QtWidgets.QMainWindow):
         self.tabWidget.setTabText(0, 'Профиль')
         self.tabWidget.setTabText(1, 'Таблицы')
         self.tabWidget.setTabText(2, 'Управление БД')
+        self.tabWidget.setTabText(3, 'Отбор')
+        self.loadTabFree()
+
+    def loadTabFree(self):
+        self.freeBtn.clicked.connect(self.execFree)
+        self.boxTabel2.currentTextChanged.connect(self.manage)
+
+    def manage(self):
+        match self.boxTabel2.currentText():
+            case 'Книги':
+                self.boxTabel3.clear()
+                self.boxTabel3.addItems(['Авторы'])
+                self.boxFK.clear()
+                self.boxFK.addItems(['id_author'])
+                self.boxOrder.clear()
+                self.boxOrder.addItems(['id_book', 'name_book', 'state', 'genre', 'publish_year', 'id_author'])
+            case 'Авторы':
+                self.boxTabel3.clear()
+                self.boxTabel3.addItems(['Книги'])
+                self.boxFK.clear()
+                self.boxFK.addItems(['id_author'])
+                self.boxOrder.clear()
+                self.boxOrder.addItems(['id_author', 'first_name', 'last_name', 'birthday'])
+            case 'Формуляры':
+                self.boxTabel3.clear()
+                self.boxTabel3.addItems(['Билеты', 'Работники'])
+                self.boxFK.clear()
+                self.boxFK.addItems(['id_ticket', 'id_worker'])
+                self.boxOrder.clear()
+                self.boxOrder.addItems(['formular_num', 'id_ticket', 'id_worker', 'date_take', 'date_back', 'books'])
+            case 'Работники':
+                self.boxTabel3.clear()
+                self.boxTabel3.addItems(['Формуляры', 'Должности'])
+                self.boxFK.clear()
+                self.boxFK.addItems(['id_worker', 'name_post'])
+                self.boxOrder.clear()
+                self.boxOrder.addItems(['id_worker', 'first_name', 'last_name', 'birthday', 'name_post'])
+            case 'Читательские билеты':
+                self.boxTabel3.clear()
+                self.boxTabel3.addItems(['Формуляры'])
+                self.boxFK.clear()
+                self.boxFK.addItems(['id_ticket'])
+                self.boxOrder.clear()
+                self.boxOrder.addItems(['id_ticket', 'first_name', 'last_name', 'birthday', 'rating'])
+            case 'Должности':
+                self.boxTabel3.clear()
+                self.boxTabel3.addItems(['Работники'])
+                self.boxFK.clear()
+                self.boxFK.addItems(['name_post'])
+                self.boxOrder.clear()
+                self.boxOrder.addItems(['name_post', 'salary', 'term', 'clearence_level'])
+
+    def execFree(self):
+        self.freeTabel.clear()
+        dataFlow = []
+        match self.selectBox.currentText():
+            case 'SELECT':
+                dataFlow = self.server.selectFree(self.getTabel2(), self.lineFree.text())
+            case 'SELECT INNER JOIN':
+                dataFlow = self.server.selectIJ(self.lineFree.text(), self.getTabel2(), self.getTabel3(), self.boxFK.currentText())
+            case 'SELECT ORDER BY':
+                dataFlow = self.server.selectOB(self.lineFree.text(), self.getTabel2(), self.boxOrder.currentText())
+        try:
+            self.freeTabel.setColumnCount(len(dataFlow[0]))
+            self.freeTabel.setRowCount(len(dataFlow))
+            for row in range(len(dataFlow)):
+                for column in range(len(dataFlow[0])):
+                    self.freeTabel.setItem(row, column, QtWidgets.QTableWidgetItem(str(dataFlow[row][column])))
+        except Exception as e:
+            print(e)
+
+    def getTabel3(self):
+        match self.boxTabel3.currentText():
+            case 'Книги':
+                return 'books'
+            case 'Авторы':
+                return 'authors'
+            case 'Формуляры':
+                return 'formulars'
+            case 'Билеты':
+                return 'tickets'
+            case 'Работники':
+                return 'library_workers'
+            case 'Должности':
+                return 'posts'
+
+    def getTabel2(self):
+        match self.boxTabel2.currentText():
+            case 'Книги':
+                return 'books'
+            case 'Авторы':
+                return 'authors'
+            case 'Формуляры':
+                return 'formulars'
+            case 'Читательские билеты':
+                return 'tickets'
+            case 'Работники':
+                return 'library_workers'
+            case 'Должности':
+                return 'posts'
 
     def setupTabel(self):
         match self.comboBox.currentText():
